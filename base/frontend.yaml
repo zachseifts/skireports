@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   labels:
-    app: frontend-ingress
+    app: frontend
 spec:
   rules:
     - host: beech.skireports.home.seifts.us
@@ -21,26 +21,26 @@ kind: Service
 metadata:
   name: frontend-internal-service
   labels:
-    app: frontend-service
+    app: frontend
 spec:
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
   selector:
-    app: frontend-deployment
+    app: frontend
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend
   labels:
-    app: frontend-deployment
+    app: frontend
 spec:
   selector:
     matchLabels:
-      app: frontend-deployment
+      app: frontend
   replicas: 1
   template:
     spec:
