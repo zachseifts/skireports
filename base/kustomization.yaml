@@ -5,5 +5,3 @@ metadata:
 resources:
   - namespace.yaml
   - frontend.yaml 
-commonLabels:
-  env: beech
