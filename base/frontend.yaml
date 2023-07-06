@@ -18,7 +18,7 @@ spec:
   template:
     spec:
       containers:
-        - name: nginx-app
-          image: nginx:alpine
+        - name: frontend
+          image: localhost:32000/beech_frontend
           ports:
             - containerPort: 80
