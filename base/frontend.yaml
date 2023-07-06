@@ -43,6 +43,9 @@ spec:
       app: frontend
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: frontend
     spec:
       containers:
         - name: frontend
