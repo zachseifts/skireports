@@ -6,5 +6,4 @@ resources:
   - namespace.yaml
   - frontend.yaml 
 commonLabels:
-  app: skireports
   env: beech
