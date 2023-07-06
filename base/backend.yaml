@@ -32,3 +32,41 @@ spec:
   selector:
     component: backend
   type: LoadBalancer
+---
+# Backend application deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    component: backend
+spec:
+  selector:
+    matchLabels:
+      component: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: backend
+    spec:
+      containers:
+        - name: backend
+          image: localhost:32000/backend
+          ports:
+            - containerPort: 5000
+          env:
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: redis-url
+      initContainers:
+        - name: cache-warmer
+          image: localhost:32000/jobs
+          env:
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: jobs-config
+                  key: redis-url
