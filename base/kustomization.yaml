@@ -12,5 +12,5 @@ configMapGenerator:
       - redis-config
   - name: backend-config
     literals:
-      redis-url: cache-service
-      api-url: beech.skireports.home.seifts.us/api
+      - redis-url: cache-service
+      - api-url: beech.skireports.home.seifts.us/api
