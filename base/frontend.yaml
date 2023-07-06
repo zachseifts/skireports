@@ -7,14 +7,15 @@ metadata:
 spec:
   rules:
     - host: beech.skireports.home.seifts.us
-      paths:
-        - pathType: Prefix
-          path: '/'
-          backend:
-            service:
-              name: frontend-internal-service
-              port:
-                number: 80
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: frontend-internal-service
+                port:
+                  number: 80
 ---
 apiVersion: v1
 kind: Service
