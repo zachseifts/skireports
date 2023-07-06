@@ -30,7 +30,7 @@ spec:
     metadata:
       name: 'skireports-{{path.basename}}'
     spec:
-      project: skireports-project
+      project: skireports
       source:
         repoURL: https://github.com/zachseifts/skireports.git
         targetRevision: HEAD
