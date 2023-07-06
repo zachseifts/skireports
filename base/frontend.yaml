@@ -6,7 +6,7 @@ metadata:
     component: frontend
 spec:
   rules:
-    - host: beech.skireports.home.seifts.us
+    - host: mountain.skireports.home.seifts.us
       http:
         paths:
           - pathType: Prefix

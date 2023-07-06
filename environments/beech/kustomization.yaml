@@ -4,3 +4,10 @@ namespace: skireports-beech
 commonLabels:
   mountain: beech
   env: dev
+patches:
+- path: frontend-ingress.yaml
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: frontend-ingress
