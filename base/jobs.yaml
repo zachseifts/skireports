@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backend-jobs
+  labels:
+    component: jobs
+spec:
+  schedule: '@hourly'
+  successfulJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backend-jobs
+              image: localhost:32000/beech_jobs
+              env:
+                - name: REDIS_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: jobs-config
+                      key: redis-url
+          restartPolicy: OnFailure
