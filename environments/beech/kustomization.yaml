@@ -5,9 +5,15 @@ commonLabels:
   mountain: beech
   env: dev
 patches:
-- path: frontend-ingress.yaml
+- path: ingress.yaml
   target:
     group: networking.k8s.io
     version: v1
     kind: Ingress
     name: frontend-ingress
+- path: ingress.yaml
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: backend-ingress
