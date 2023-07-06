@@ -23,4 +23,20 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+  selector:
+    app: frontend-deployment
   type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: frontend
+          image: localhost:32000/beech_frontend
+          ports:
+            - containerPort: 80
