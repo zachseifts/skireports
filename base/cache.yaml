@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache-internal-service
+  labels:
+    component: cache
+spec:
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+  selector:
+    component: cache
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache
+  labels:
+    component: cache
+spec:
+  selector:
+    matchLabels:
+      component: cache
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: cache
+    spec: 
+      containers:
+        - name: redis
+          image: redis:alpine
+          command:
+            - redis-server
+            - "/redis/redis.conf"
+          ports:
+            - containerPort: 6379
+          resources:
+            limits:
+              cpu: "0.1"
+          volumeMounts:
+            - mountPath: /redis-data
+              name: data
+            - mountPath: /redis
+              name: config
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: "redis-config"
+            items:
+              - key: redis-config
+                path: redis.conf
+

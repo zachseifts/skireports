@@ -5,3 +5,8 @@ metadata:
 resources:
   - namespace.yaml
   - frontend.yaml 
+  - cache.yaml 
+configMapGenerator:
+  - name: redis-config
+    files:
+      - redis-config
