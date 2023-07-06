@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata: 
-  name: skireports-project
+  name: skireports
   namespace: argocd
 spec:
   description: An argocd app project for building ski reports
@@ -18,7 +18,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: skireports-applicationset
+  name: skireports
 spec:
   generators:
   - git:
