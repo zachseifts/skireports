@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+  name: skireports-project
+  namespace: argocd
+spec:
+  description: An argocd app project for building ski reports
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/zachseifts/skireports.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: skireports-applicationset
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/zachseifts/skireports.git
+      revision: HEAD
+      directories:
+        - path: environments/*
+  template:
+    metadata:
+      name: 'skireports-{{path.basename}}'
+    spec:
+      project: skireports-project
+      source:
+        repoURL: https://github.com/zachseifts/skireports.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'skireports-{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
