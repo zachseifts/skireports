@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: backend-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     component: backend
 spec:
@@ -12,7 +10,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: '/stuff'
+            path: '/api'
             backend:
               service:
                 name: backend-internal-service
