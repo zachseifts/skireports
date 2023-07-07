@@ -14,8 +14,8 @@ configMapGenerator:
       - redis-config
   - name: backend-config
     literals:
-      - redis-url=cache-service
+      - redis-url=cache-internal-service
       - api-url=beech.skireports.home.seifts.us/api
   - name: jobs-config
     literals:
-      - redis-url=cache-service
+      - redis-url=cache-internal-service
