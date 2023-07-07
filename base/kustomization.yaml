@@ -7,7 +7,7 @@ resources:
 # - frontend.yaml 
   - backend.yaml 
   - cache.yaml 
-# - jobs.yaml 
+  - jobs.yaml 
 configMapGenerator:
   - name: redis-config
     files:
