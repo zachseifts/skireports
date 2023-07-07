@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/template/spec/containers/0/image
   value: localhost:32000/beech_backend:1.0
-#- op: replace
-#  path: /spec/template/spec/initContainers/0/image
-#  value: localhost:32000/beech_jobs
+ - op: replace
+   path: /spec/template/spec/initContainers/0/image
+   value: localhost:32000/beech_jobs

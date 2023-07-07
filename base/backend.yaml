@@ -64,12 +64,12 @@ spec:
                 configMapKeyRef:
                   name: backend-config
                   key: redis-url
-#     initContainers:
-#       - name: cache-warmer
-#         image: localhost:32000/jobs
-#         env:
-#           - name: REDIS_URL
-#             valueFrom:
-#               configMapKeyRef:
-#                 name: jobs-config
-#                 key: redis-url
+      initContainers:
+        - name: cache-warmer
+          image: localhost:32000/jobs
+          env:
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: jobs-config
+                  key: redis-url
