@@ -1,4 +1,4 @@
 - op: replace
   path: /spec/template/spec/containers/0/image
-  value: localhost:32000/beech_frontend:1.0
+  value: localhost:32000/beech_frontend:1.0.1
 
