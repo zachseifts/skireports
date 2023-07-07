@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: backend-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     component: backend
 spec:
@@ -12,7 +12,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: '/stuff/'
+            path: '/stuff'
             backend:
               service:
                 name: backend-internal-service
