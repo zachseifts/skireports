@@ -4,7 +4,7 @@ metadata:
   name: skireports-mountain
 resources:
   - namespace.yaml
-# - frontend.yaml 
+  - frontend.yaml 
   - backend.yaml 
   - cache.yaml 
   - jobs.yaml 
