@@ -34,7 +34,7 @@ spec:
     targetPort: 5000
   selector:
     component: backend
-  type: LoadBalancer
+  type: ClusterIP
 ---
 # Backend application deployment
 apiVersion: apps/v1
